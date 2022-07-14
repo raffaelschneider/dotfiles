@@ -123,7 +123,7 @@ font:
     style: Regular
 
   # Bold font face
-  #old:
+  bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
