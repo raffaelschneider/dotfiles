@@ -1,0 +1,25 @@
+$ ghc --make xmonad.hs -i -ilib -fforce-recomp -main-is main -dynamic -v0 -outputdir /home/zara/.xmonad/build-x86_64-linux -o /home/zara/.xmonad/xmonad-x86_64-linux
+
+xmonad.hs:29:12: warning: [-Wdeprecations]
+    In the use of ‘defaultConfig’
+    (imported from XMonad, but defined in XMonad.Config):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
+   |
+29 | myConfig = defaultConfig { modMask = myModMask,
+   |            ^^^^^^^^^^^^^
+
+xmonad.hs:98:15: warning: [-Wdeprecations]
+    In the use of ‘docksEventHook’
+    (imported from XMonad.Hooks.ManageDocks):
+    Deprecated: "Use docks instead."
+   |
+98 | myEventHook = docksEventHook <+> fullscreenEventHook
+   |               ^^^^^^^^^^^^^^
+
+xmonad.hs:98:34: warning: [-Wdeprecations]
+    In the use of ‘fullscreenEventHook’
+    (imported from XMonad.Hooks.EwmhDesktops):
+    Deprecated: "Use ewmhFullscreen instead."
+   |
+98 | myEventHook = docksEventHook <+> fullscreenEventHook
+   |                                  ^^^^^^^^^^^^^^^^^^^
