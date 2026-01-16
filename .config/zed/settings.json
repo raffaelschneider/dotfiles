@@ -1,0 +1,24 @@
+// Zed settings
+// https://zed.dev/docs/configuring-zed
+{
+  "agent": {
+    "default_profile": "write",
+    "always_allow_tool_actions": true,
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-opus-4-1-thinking"
+    }
+  },
+  "buffer_font_family": "Zed Plex Mono",
+  "buffer_font_size": 16,
+  "buffer_font_features": {
+    "zero": true
+  },
+  "ui_font_size": 16,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Catppuccin Macchiato (Blur)"
+  },
+  "soft_wrap": "editor_width"
+}

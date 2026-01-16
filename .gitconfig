@@ -1,0 +1,44 @@
+# Git Configuration
+# Update [user] section with your details:
+#   git config --global user.name "Your Name"
+#   git config --global user.email "your.email@example.com"
+#   git config --global user.signingkey "/path/to/your/key.pub"
+
+[user]
+	# name = Your Name
+	# email = your.email@example.com
+	# signingkey = /path/to/your/ssh/key.pub
+
+[init]
+	defaultBranch = main
+
+[core]
+	editor = nano
+	autocrlf = input
+	hooksPath = ~/.git-hooks
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[pull]
+	rebase = false
+
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	visual = !gitk
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
+
+# Conditional includes for different organizations
+# [includeIf "gitdir:~/Development/github.com/your-org/"]
+# 	path = ~/.gitconfig-your-org
