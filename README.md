@@ -16,16 +16,27 @@ cd ~/dotfiles
 ./install.sh
 ```
 
-## Device Branches
+## Branches
+
+### Device Branches
 
 Each device has its own branch with tailored configurations:
 
 | Branch | Device | Description |
 |--------|--------|-------------|
-| `m4max` | Apple M4 Max | macOS, Ghostty, Zed, Kitty, Fish, Zsh |
-| `m1max` | Apple M1 Max | macOS workstation |
+| `m4max` | MacBook Pro M4 Max | macOS, Ghostty, Zed, Kitty, Fish, Zsh |
+| `m1imac` | iMac M1 | macOS, Ghostty, Zed, Kitty, Fish, Zsh |
+| `m1max` | MacBook Pro M1 Max | macOS workstation |
 | `x1carbon` | ThinkPad X1 Carbon | Linux laptop |
 | `g5zbook` | HP ZBook G5 | Linux workstation |
+
+### Shared Branch
+
+| Branch | Description |
+|--------|-------------|
+| `shared` | Git config (.gitconfig, .git-hooks) shared across all devices |
+
+Install device configs first, then shared configs for git setup.
 
 ## Structure
 

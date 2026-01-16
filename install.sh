@@ -21,23 +21,29 @@ echo "╚═══════════════════════�
 echo -e "${NC}"
 
 # Available device branches
-DEVICES=("m4max" "m1max" "x1carbon" "g5zbook")
+DEVICES=("m4max" "m1imac" "m1max" "x1carbon" "g5zbook")
+DESCRIPTIONS=("MacBook Pro M4 Max" "iMac M1" "MacBook Pro M1 Max" "ThinkPad X1 Carbon" "HP ZBook G5")
 
 echo -e "${YELLOW}Available device configurations:${NC}"
 echo ""
 for i in "${!DEVICES[@]}"; do
-    echo "  $((i+1))) ${DEVICES[$i]}"
+    echo "  $((i+1))) ${DEVICES[$i]} - ${DESCRIPTIONS[$i]}"
 done
+echo ""
+echo "  s) shared - Git config only (.gitconfig, .git-hooks)"
 echo ""
 
 # Get user selection
 while true; do
-    read -p "Select device [1-${#DEVICES[@]}]: " selection
-    if [[ "$selection" =~ ^[0-9]+$ ]] && [ "$selection" -ge 1 ] && [ "$selection" -le "${#DEVICES[@]}" ]; then
+    read -p "Select device [1-${#DEVICES[@]} or s]: " selection
+    if [[ "$selection" == "s" || "$selection" == "S" ]]; then
+        DEVICE="shared"
+        break
+    elif [[ "$selection" =~ ^[0-9]+$ ]] && [ "$selection" -ge 1 ] && [ "$selection" -le "${#DEVICES[@]}" ]; then
         DEVICE="${DEVICES[$((selection-1))]}"
         break
     else
-        echo -e "${RED}Invalid selection. Please enter a number between 1 and ${#DEVICES[@]}.${NC}"
+        echo -e "${RED}Invalid selection. Please enter a number between 1 and ${#DEVICES[@]}, or 's' for shared.${NC}"
     fi
 done
 
@@ -154,13 +160,25 @@ echo -e "${GREEN}╚════════════════════
 echo ""
 echo -e "${YELLOW}Next steps:${NC}"
 echo ""
-echo "  1. Configure git (if .gitconfig was installed):"
-echo "     git config --global user.name \"Your Name\""
-echo "     git config --global user.email \"your.email@example.com\""
-echo ""
-echo "  2. Authenticate GitHub CLI (if installed):"
-echo "     gh auth login"
-echo ""
-echo "  3. Restart your shell or run:"
-echo "     source ~/.zshrc"
+
+if [ "$DEVICE" == "shared" ]; then
+    echo "  1. Set your device-specific signing key:"
+    echo "     git config --global user.signingkey ~/.ssh/YOUR_KEY.pub"
+    echo ""
+    echo "  2. Authenticate GitHub CLI:"
+    echo "     gh auth login"
+else
+    echo "  1. Install shared configs (.gitconfig, .git-hooks):"
+    echo "     Run this installer again and select 's' for shared"
+    echo "     OR: git clone -b shared $REPO_URL ~/dotfiles-shared && ~/dotfiles-shared/install.sh"
+    echo ""
+    echo "  2. Set your signing key:"
+    echo "     git config --global user.signingkey ~/.ssh/YOUR_KEY.pub"
+    echo ""
+    echo "  3. Authenticate GitHub CLI:"
+    echo "     gh auth login"
+    echo ""
+    echo "  4. Restart your shell or run:"
+    echo "     source ~/.zshrc"
+fi
 echo ""
