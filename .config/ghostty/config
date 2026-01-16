@@ -1,0 +1,9 @@
+# Ghostty Configuration
+# https://ghostty.org/docs/config
+
+# Font
+font-family = "IBM Plex Mono"
+font-size = 16
+
+# Theme
+theme = catppuccin-macchiato

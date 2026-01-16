@@ -1,0 +1,21 @@
+// Zed keymap
+// https://zed.dev/docs/key-bindings
+[
+  {
+    "bindings": {
+      "cmd-shift-c": "project_panel::CollapseAllEntries"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    }
+  }
+]
