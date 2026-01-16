@@ -1,0 +1,57 @@
+[user]
+	name = Raffael Schneider
+	email = raffael.schneider@protonmail.com
+	# signingkey is set per-device after install
+
+[credential]
+	helper = osxkeychain
+
+[includeIf "gitdir:~/Development/github.com/raskell-io/"]
+	path = ~/.gitconfig-raskell-io
+
+[includeIf "gitdir:~/Development/github.com/archipelag-io/"]
+	path = ~/.gitconfig-archipelag-io
+
+[includeIf "gitdir:~/Development/github.com/wheelofheaven/"]
+	path = ~/.gitconfig-wheelofheaven
+
+[includeIf "gitdir:~/Development/github.com/raffaelschneider/"]
+	path = ~/.gitconfig-raffaelschneider
+
+[init]
+	defaultBranch = main
+
+[core]
+	editor = nano
+	autocrlf = input
+	hooksPath = ~/.git-hooks
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[pull]
+	rebase = false
+
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	visual = !gitk
+
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
